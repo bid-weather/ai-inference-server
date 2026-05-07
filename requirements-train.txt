@@ -1,0 +1,2 @@
+-r requirements.txt
+torch==2.6.0+cu121  # CUDA 버전에 맞게 추후 학습시 변경

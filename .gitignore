@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# 가상환경
+.venv/
+venv/
+env/
+.conda/
+
+# 환경변수
+.env
+.env.*
+!.env.example
+
+# 모델 캐시 (KoBERT 다운로드 파일)
+.cache/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# IDE
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# 로그
+*.log
+logs/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/

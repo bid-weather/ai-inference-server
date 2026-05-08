@@ -23,8 +23,8 @@ class KoBERTModel:
             return
         
         logger.info("KoBERT 모델 로딩 중")
-        cls._tokenizer = AutoTokenizer.from_pretrained(settings.kobert_model_name)
-        cls._model = AutoModel.from_pretrained(settings.kobert_model_name)
+        cls._tokenizer = AutoTokenizer.from_pretrained(settings.kobert_model_name, trust_remote_code=True)
+        cls._model = AutoModel.from_pretrained(settings.kobert_model_name, trust_remote_code=True)
         cls._model.eval()
         logger.info("KoBERT 모델 로드 완료")
     

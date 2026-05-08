@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import event
+from contextlib import contextmanager
 from app.core.config import settings
 
 DATABASE_URL = (
@@ -24,6 +25,7 @@ SessionLocal = sessionmaker(
 
 Base = declarative_base()
 
+@contextmanager
 def get_db():
     db = SessionLocal()
     try:

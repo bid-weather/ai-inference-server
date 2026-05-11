@@ -6,7 +6,7 @@ uvicorn[standard]==0.34.0
 aiokafka==0.11.0
 
 # KoBERT
-torch==2.6.0
+# torch==2.6.0
 transformers==4.51.3
 sentencepiece==0.2.0
 

@@ -86,7 +86,7 @@ def _classify_category(embedding: np.ndarray) -> int:
             best_avg_similarity = avg_similarity
             best_category_id = category_id
     
-    return category_id
+    return best_category_id
 
 def classify_announcement(
     announcement_id: int,

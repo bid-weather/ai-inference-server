@@ -56,7 +56,7 @@ CATEGORY_ANCHORS = {
     ],
 }
 
-_anchor_embedding: dict[int, list[np.ndarray]] | None = None
+_anchor_embeddings: dict[int, list[np.ndarray]] | None = None
 
 def _get_anchor_embeddings() -> dict[int, list[np.ndarray]]:
     global _anchor_embeddings

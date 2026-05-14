@@ -139,12 +139,11 @@ def classify_announcement(
     
     if result is None:
         logger.warning(f"유사 공고 없음 또는 유사도 미달: id={announcement_id}, title={title[:20]}, ")
-        logger.warning(f"similarity={result['similarity'] if result else None}")
         return {
             "announcement_id": announcement_id,
             "category_id": category_id,
             "subcategory_id": None,
-            "similarity": result["similarity"] if result else None,
+            "similarity": None,
             "classified": False
         }
     

@@ -5,7 +5,7 @@ from datetime import date
 from aiokafka import AIOKafkaConsumer
 
 from app.core.config import settings
-from app.service.classification_service import classify_all_unclassified
+from app.service.keyword_classification_service import classify_one_day
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ async def _handle_message(message) -> None:
         date_str = message.value
         d = date.fromisoformat(date_str)
         
-        await asyncio.to_thread(classify_all_unclassified, d)
+        await asyncio.to_thread(classify_one_day, d)
         logger.info(f"메시지 처리 완료: from {d}")
     except Exception as e:
         logger.error(f"시그널 처리 실패: {e}", exc_info=True)

@@ -56,8 +56,11 @@ def predict_and_save(predicted_at: date) -> None:
     # ── 4. 날씨 맵 구성 ────────────────────────────────────────────
     actual_weather_list = get_weather_actual(lag_source_start, predicted_at)
     actual_weather: dict = {r["date"]: r for r in actual_weather_list}
-    future_weather = get_weather_avg_past_two_years(future_dates)  # None 포함 가능
-    weather_map: dict = {**actual_weather, **future_weather}
+    # predicted_at 당일 실제 날씨가 DB에 없을 수 있으므로 과거 2년 평균을 fallback으로 사용.
+    # actual_weather에 있으면 실제값이 덮어씀.
+    fallback_dates = [predicted_at, *future_dates]
+    future_weather = get_weather_avg_past_two_years(fallback_dates)  # None 포함 가능
+    weather_map: dict = {**future_weather, **actual_weather}
 
     # ── 5. lag 소스 구성 ──────────────────────────────────────────
     # category: (date, category_id) → count

@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     kafka_consumer_group_id: str
     
     kobert_model_name: str
+    model_weights_dir: str
     
     class Config:
         env_file = ".env"

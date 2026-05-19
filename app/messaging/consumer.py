@@ -6,6 +6,8 @@ from aiokafka import AIOKafkaConsumer
 
 from app.core.config import settings
 from app.service.keyword_classification_service import classify_one_day
+from app.service.prediction_service import predict_and_save
+from app.messaging.producer import publish_prediction_response
 
 logger = logging.getLogger(__name__)
 
@@ -57,6 +59,8 @@ async def _handle_message(message) -> None:
         d = date.fromisoformat(date_str)
         
         await asyncio.to_thread(classify_one_day, d)
+        await asyncio.to_thread(predict_and_save, d)
+        await publish_prediction_response() 
         logger.info(f"메시지 처리 완료: from {d}")
     except Exception as e:
         logger.error(f"시그널 처리 실패: {e}", exc_info=True)
